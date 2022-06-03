@@ -31,9 +31,10 @@ jobs:
       run: dotnet publish Petscribe.csproj -c Release -o release --nologo
     
     # https://swimburger.net/blog/dotnet/how-to-deploy-aspnet-blazor-webassembly-to-github-pages
-    # changes the base-tag in index.html from '/' to 'asteros' to match GitHub Pages repository subdirectory
-    - name: Change base-tag in index.html from / to asteros
-      run: sed -i 's/<base href="\/" \/>/<base href="\/asteros\/" \/>/g' release/wwwroot/index.html
+
+    # changes the base-tag in index.html from '/' to '{repo name}' to match GitHub Pages repository subdirectory
+    - name: Change base-tag in index.html from / to blag
+      run: sed -i 's/<base href="\/" \/>/<base href="\/blag\/" \/>/g' release/wwwroot/index.html
     
     # copy index.html to 404.html to serve the same file when a file is not found
     - name: copy index.html to 404.html
